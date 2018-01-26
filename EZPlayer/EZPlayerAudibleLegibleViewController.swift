@@ -21,8 +21,8 @@ public struct  MediaTypes: OptionSet {
 }
 open class EZPlayerAudibleLegibleViewController: UIViewController {
     fileprivate let mediaTypeTableViewIdentifier = "mediaTypeTableViewIdentifier"
-    fileprivate let audioTitle = "Audios"
-    fileprivate let subtitleTitle = "Subtitles"
+    fileprivate let audioTitle = "Аудио"
+    fileprivate let subtitleTitle = "Субтитры"
     fileprivate let closedCaptionTitle = "CC"
     fileprivate let sectionHeight: CGFloat = 44.0
     fileprivate let cellHeight: CGFloat = 44.0
@@ -49,8 +49,9 @@ open class EZPlayerAudibleLegibleViewController: UIViewController {
             popoverPresentationController.barButtonItem = barButtonItem
         }
         popoverPresentationController.permittedArrowDirections = .down
-        popoverPresentationController.backgroundColor = UIColor.white
+        popoverPresentationController.backgroundColor = UIColor.black
         popoverPresentationController.delegate = self
+        
 
 
         self.player = player
@@ -81,6 +82,7 @@ open class EZPlayerAudibleLegibleViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
 
     override open func didReceiveMemoryWarning() {
@@ -138,12 +140,14 @@ extension EZPlayerAudibleLegibleViewController: UIPopoverPresentationControllerD
         }else{
             return .fullScreen
         }
+        
     }
 
     public func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
         let btnDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissPop))
         navigationController.topViewController!.navigationItem.rightBarButtonItem = btnDone
+        navigationController.navigationBar.barStyle = .black
         return navigationController
     }
 
@@ -219,6 +223,9 @@ extension EZPlayerAudibleLegibleViewController: UITableViewDataSource,UITableVie
         if cell == nil{
             cell = UITableViewCell(style: .default, reuseIdentifier: self.mediaTypeTableViewIdentifier)
         }
+        
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .white
 
         if indexPath.section == 0{
             if self.mediaTypes.contains(.audios) {
@@ -230,7 +237,7 @@ extension EZPlayerAudibleLegibleViewController: UITableViewDataSource,UITableVie
             }
         }
         if indexPath.row == 0 {
-            cell.textLabel?.text = "None"
+            cell.textLabel?.text = "Выключить"
             cell.accessoryType = self.player.playerItem?.selectedMediaCharacteristicLegibleOption == nil ? .checkmark : .none
             return cell
         }

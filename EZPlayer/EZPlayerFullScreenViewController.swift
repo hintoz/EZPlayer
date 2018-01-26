@@ -58,7 +58,8 @@ open class EZPlayerFullScreenViewController: UIViewController {
     }
 
     override open var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        switch self.player.fullScreenMode {
+        guard let player = self.player else { return .all }
+        switch player.fullScreenMode {
         case .portrait:
             return [.portrait]
         case .landscape:
@@ -67,6 +68,10 @@ open class EZPlayerFullScreenViewController: UIViewController {
     }
 
     override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+//        self.currentOrientation = preferredlandscapeForPresentation == .landscapeLeft ? .landscapeRight : .landscapeLeft
+        
+        let current = UIApplication.shared.statusBarOrientation
+        preferredlandscapeForPresentation = current == .portrait || current == .portraitUpsideDown ? .landscapeRight : current
         self.currentOrientation = preferredlandscapeForPresentation == .landscapeLeft ? .landscapeRight : .landscapeLeft
 
         switch self.player.fullScreenMode {
