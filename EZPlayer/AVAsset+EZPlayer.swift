@@ -66,6 +66,8 @@ public extension AVAsset {
             for option in mediaSelectionGroup.options {
                 if let localDisplayName = self.localDisplayName(forMediaSelectionOption: option){
                     audios.append((option,localDisplayName))
+                } else {
+                    audios.append((option, option.extendedLanguageTag ?? option.displayName))
                 }
             }
             if audios.count > 0{

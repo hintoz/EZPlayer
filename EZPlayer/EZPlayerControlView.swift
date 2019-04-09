@@ -49,6 +49,10 @@ open class EZPlayerControlView: UIView{
     @IBOutlet weak var audioSubtitleCCButtonWidthConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var airplayContainer: UIView!
+    
+    @IBOutlet weak var toFloatButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var skipBackButton: UIButton!
 
     // MARK: - Life cycle
 
@@ -302,6 +306,27 @@ extension EZPlayerControlView: EZPlayerCustom {
         }
         player.backButtonBlock?(displayMode)
     }
+    
+    @IBAction func toFloatButtonPressed(_ sender: Any) {
+        guard let player = self.player else {
+            return
+        }
+        player.toFloat()
+    }
+    
+    @IBAction func skipButtonPressed(_ sender: Any) {
+        guard let player = self.player else {
+            return
+        }
+        player.seek(to: player.currentTime! + 10)
+    }
+    
+    @IBAction func skipBackButtonPressed(_ sender: Any) {
+        guard let player = self.player else {
+            return
+        }
+        player.seek(to: player.currentTime! - 10)
+    }
 
 
     // MARK: - EZPlayerGestureRecognizer
@@ -369,7 +394,7 @@ extension EZPlayerControlView: EZPlayerCustom {
         case .fullscreen:
             self.fullEmbeddedScreenButtonWidthConstraint.constant = 50
             self.fullEmbeddedScreenButton.setImage(UIImage(named: "btn_normalscreen22x22", in: Bundle(for: EZPlayerControlView.self), compatibleWith: nil), for: .normal)
-            if player.lastDisplayMode == .none{
+            if player.lastDisplayMode == .none || player.lastDisplayMode == .float{
                 self.fullEmbeddedScreenButtonWidthConstraint.constant = 0
             }
         case .float:
