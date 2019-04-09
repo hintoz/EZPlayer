@@ -166,13 +166,13 @@ public class EZPlayerUtils{
     }
     
     /// is iPhone X
-    public static var isPhoneX: Bool{
-        return UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.size == CGSize(width: 1125, height: 2436)
+    public static var isModelWithoutButton: Bool{
+        return UIDevice.current.isModelWithoutButton
     }
     
     /// is iPhone X
     public static var statusBarHeight: CGFloat{
-        return EZPlayerUtils.isPhoneX ? 44 : 20
+        return EZPlayerUtils.isModelWithoutButton ? 44 : 20
     }
     
     

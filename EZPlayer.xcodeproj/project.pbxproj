@@ -32,6 +32,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		69FD23FF225D25FB004EEE50 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD23FE225D25FB004EEE50 /* UIDeviceExtension.swift */; };
 		991492311DDC0274005FF2BD /* EZPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 991492301DDC0274005FF2BD /* EZPlayer.xcassets */; };
 		991492341DDC166A005FF2BD /* AVAsset+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */; };
 		9919C1441E6D545A00249407 /* EZPlayerAVAssetResourceLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919C1431E6D545A00249407 /* EZPlayerAVAssetResourceLoaderDelegate.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69FD23FE225D25FB004EEE50 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		991492301DDC0274005FF2BD /* EZPlayer.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EZPlayer.xcassets; sourceTree = "<group>"; };
 		991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAsset+EZPlayer.swift"; sourceTree = "<group>"; };
 		9919C1431E6D545A00249407 /* EZPlayerAVAssetResourceLoaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerAVAssetResourceLoaderDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				9990340E1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift */,
 				99B999751E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift */,
 				99998A271DE3479700296EDB /* Delay.swift */,
+				69FD23FE225D25FB004EEE50 /* UIDeviceExtension.swift */,
 			);
 			name = Utiles;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				995E79281DD9A2E9006CE7E9 /* EZPlayerControlView.swift in Sources */,
 				99B999761E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift in Sources */,
 				99EB8CB01E0FFEEC00176BF2 /* EZPlayerFloatView.swift in Sources */,
+				69FD23FF225D25FB004EEE50 /* UIDeviceExtension.swift in Sources */,
 				99998A261DE3450700296EDB /* Timer+EZPlayer.swift in Sources */,
 				99C221DA1DDCAEEA00167DBE /* EZPlayerTransportExtension.swift in Sources */,
 				995D47AA1DFFB05500BEB41B /* EZPlayerFloatContainer.swift in Sources */,
