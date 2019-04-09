@@ -45,7 +45,7 @@ public extension Notification.Name {
 }
 
 public extension Notification {
-    public struct Key {
+    struct Key {
         /// 播放器状态改变
         public static let EZPlayerNewStateKey = "EZPlayerNewStateKey"
         public static let EZPlayerOldStateKey = "EZPlayerOldStateKey"

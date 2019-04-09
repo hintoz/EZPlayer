@@ -9,7 +9,7 @@
 import AVFoundation
 public extension AVPlayerItem {
 
-    public var bufferDuration: TimeInterval? {
+    var bufferDuration: TimeInterval? {
         if  let first = self.loadedTimeRanges.first { //获取缓冲进度
             let timeRange = first.timeRangeValue // 获取缓冲区域
             let startSeconds = CMTimeGetSeconds(timeRange.start)//开始的时间
@@ -22,7 +22,7 @@ public extension AVPlayerItem {
 
     
     /// 获取／设置当前subtitle／cc
-    public var selectedMediaCharacteristicLegibleOption:AVMediaSelectionOption?{
+    var selectedMediaCharacteristicLegibleOption:AVMediaSelectionOption?{
         get{
             if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
                 return self.selectedMediaOption(in: legibleGroup)
@@ -37,10 +37,10 @@ public extension AVPlayerItem {
     }
 
     /// 获取／设置当前cc
-    public var selectedClosedCaptionOption:AVMediaSelectionOption?{
+    var selectedClosedCaptionOption:AVMediaSelectionOption?{
         get{
             if let option = self.selectedMediaCharacteristicLegibleOption{
-                if option.mediaType == "clcp" {
+                if option.mediaType == .closedCaption {
                     return option
                 }
             }
@@ -50,7 +50,7 @@ public extension AVPlayerItem {
             if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
                 if newValue == nil{
                     self.select(newValue, in: legibleGroup)
-                }else if newValue!.mediaType == "clcp"{
+                }else if newValue!.mediaType == .closedCaption {
                     self.select(newValue, in: legibleGroup)
                 }
             }
@@ -58,7 +58,7 @@ public extension AVPlayerItem {
     }
 
     /// 获取／设置当前subtitle
-    public var selectedSubtitleOption:AVMediaSelectionOption?{
+    var selectedSubtitleOption:AVMediaSelectionOption?{
         get{
             if let option = self.selectedMediaCharacteristicLegibleOption{
                 if !option.hasMediaCharacteristic(AVMediaCharacteristic.containsOnlyForcedSubtitles) {
@@ -79,7 +79,7 @@ public extension AVPlayerItem {
     }
 
     /// 获取／设置当前audio
-    public var selectedMediaCharacteristicAudibleOption:AVMediaSelectionOption?{
+    var selectedMediaCharacteristicAudibleOption:AVMediaSelectionOption?{
         get{
             if let group = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.audible){
                 return self.selectedMediaOption(in: group)

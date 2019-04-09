@@ -9,7 +9,7 @@
 import AVFoundation
 public extension AVAsset {
 
-    public var title: String? {
+    var title: String? {
         var error: NSError?
         let status = self.statusOfValue(forKey: "commonMetadata", error: &error)
         if error != nil {
@@ -26,11 +26,11 @@ public extension AVAsset {
     }
 
     /// 获取所有cc
-    public var closedCaption: [AVMediaSelectionOption]? {
+    var closedCaption: [AVMediaSelectionOption]? {
         var closedCaptions = [AVMediaSelectionOption]()
         if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
             for option in mediaSelectionGroup.options {
-                if option.mediaType == "clcp" {
+                if option.mediaType == .closedCaption {
                     closedCaptions.append(option)
                 }
             }
@@ -42,7 +42,7 @@ public extension AVAsset {
     }
 
     /// 获取所有subtitle
-    public var subtitles: [(subtitle: AVMediaSelectionOption,localDisplayName: String)]? {
+    var subtitles: [(subtitle: AVMediaSelectionOption,localDisplayName: String)]? {
         var subtitles = [(subtitle: AVMediaSelectionOption,localDisplayName: String)]()
         if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
             for option in mediaSelectionGroup.options {
@@ -60,7 +60,7 @@ public extension AVAsset {
     }
 
     /// 获取所有audio
-    public var audios: [(audio: AVMediaSelectionOption,localDisplayName: String)]? {
+    var audios: [(audio: AVMediaSelectionOption,localDisplayName: String)]? {
         var audios = [(audio: AVMediaSelectionOption,localDisplayName: String)]()
         if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.audible){
             for option in mediaSelectionGroup.options {
@@ -77,7 +77,7 @@ public extension AVAsset {
         return nil
     }
 
-    public func localDisplayName(forMediaSelectionOption subtitle: AVMediaSelectionOption) -> String?{
+    func localDisplayName(forMediaSelectionOption subtitle: AVMediaSelectionOption) -> String?{
         var title: String? = nil
         var metadataItems = AVMetadataItem.metadataItems(from: subtitle.commonMetadata, withKey: AVMetadataKey.commonKeyTitle, keySpace: AVMetadataKeySpace.common)
         if metadataItems.count > 0 {
